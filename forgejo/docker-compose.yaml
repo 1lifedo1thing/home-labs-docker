@@ -10,10 +10,19 @@ services:
       - FORGEJO__database__NAME=forgejo
       - FORGEJO__database__USER=forgejo
       - FORGEJO__database__PASSWD=20260912
+      - GITEA__mailer__ENABLED=true
+      - GITEA__mailer__PROTOCOL=smtp
+      - GITEA__mailer__SMTP_ADDR=host.docker.internal:11025
+      - GITEA__mailer__FROM=gitea@nt.damingerdai.com
+      - GITEA__mailer__USER=
+      - GITEA__mailer__PASSWD=
     restart: always
     volumes:
       - ./forgejo-data:/data
+      - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     ports:
       - "13000:3000"
       - "1022:1022"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
