@@ -12,10 +12,14 @@ services:
       - FORGEJO__database__PASSWD=20260912
       - GITEA__mailer__ENABLED=true
       - GITEA__mailer__PROTOCOL=smtp
-      - GITEA__mailer__SMTP_ADDR=host.docker.internal:11025
+      - GITEA__mailer__SMTP_ADDR=host.docker.internal
+      - GITEA__mailer__SMTP_PORT=11025
       - GITEA__mailer__FROM=gitea@nt.damingerdai.com
       - GITEA__mailer__USER=
       - GITEA__mailer__PASSWD=
+      - FORGEJO__server__SSH_PORT=1022
+      - FORGEJO__server__SSH_LISTEN_PORT=1022
+      - FORGEJO__server__START_SSH_SERVER=true
     restart: always
     volumes:
       - ./forgejo-data:/data
